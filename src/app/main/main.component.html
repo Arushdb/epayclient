@@ -1,0 +1,29 @@
+
+<mat-card>
+    <div class="example-button-row">
+<button mat-raised-button   color="primary" [matMenuTriggerFor]="studentMenu">Student</button>
+<mat-menu #studentMenu="matMenu" yPosition="below">
+  <button   routerLink="/student"    mat-menu-item>Continue Student</button>
+  <button mat-menu-item>New Admission</button>
+</mat-menu>
+
+<button  mat-raised-button  btn-lg color="primary" [matMenuTriggerFor]="employeeMenu">Employee</button>
+<mat-menu #employeeMenu="matMenu" yPosition="below">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+
+<button  mat-raised-button btn-lg color="primary" [matMenuTriggerFor]="vendorMenu">Vendor</button>
+<mat-menu #vendorMenu="matMenu" xPosition="before">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+
+
+<button  mat-raised-button btn-lg color="primary" [matMenuTriggerFor]="miscMenu">Miscellaneous</button>
+<mat-menu #miscMenu="matMenu" xPosition="after">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+</div>
+</mat-card>
