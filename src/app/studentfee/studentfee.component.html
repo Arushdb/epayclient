@@ -13,35 +13,62 @@
                             width="20%">
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-2 p-2 bd-highlight">
-                        <label>Select Program</label>
-                        <app-custom-combobox [labeltext]='pgmlabel' [Options]='pgmdata' [combowidth]='pgmwidth'>
+                        <label>Semester</label>
+                        <select formControlName="semester" class="form-control">
+                            <option value=""></option>
+                            <option value="SM1">1</option>
+                            <option value="SM2">2</option>
+                            <option value="SM3">3</option>
+                            <option value="SM4">4</option>
+                            <option value="SM5">5</option>
+                            <option value="SM6">6</option>
+                            <option value="SM7">7</option>
+                            <option value="SM8">8</option>
+                            <option value="SM9">9</option>
+                            <option value="SM10">10</option>
+                            <option value="SM11">11</option>
+                            <option value="SM12">12</option>
+                        </select>
+                    </div>
 
-                        </app-custom-combobox>
-
+                    <div class="text-right col-md-4 col-sm-2 col-lg-1 p-2 m-3 bd-highlight">
+                        <button type="button" class="btn btn-primary m-2 ">OK</button>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-4 col-sm-4 col-lg-1 p-2 bd-highlight">
-                        <label>Semester</label>
-                        <input type="text" class="form-control readonly" formControlName="semester"
-                            placeholder="Semester" width="20%">
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-lg-4 p-2 bd-highlight">
-                        <label>Name</label>
-                        <input type="text" class="form-control readonly" formControlName="studentname" width="20%">
+                
+                <div class="row" *ngIf="show">
+
+                    <div  class="col-md-4 col-sm-4 col-lg-4 p-2 bd-highlight">
+                        <label>Program</label>
+                        <input type="text" class="form-control readonly" formControlName="program">
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-3 p-2 bd-highlight">
+                        <label>Name</label>
+                        <input type="text" class="form-control readonly" formControlName="studentname">
+                    </div>
+
+                </div>
+
+                <div class="row" *ngIf= "show">
+                    <div class="col-md col-sm col-lg p-2 bd-highlight">
+                        <label>Fee Amount</label>
+                        <input type="text" class="form-control readonly" formControlName="feeamount">
+                    </div>
+                    <div class="col-md col-sm col-lg p-2 bd-highlight">
+                        <label>Late fee</label>
+                        <input type="text" class="form-control readonly" formControlName="latefee">
+                    </div>
+                    <div class="col-md col-sm-4 col-lg p-2 bd-highlight">
+                        <label>Lab fee</label>
+                        <input type="text" class="form-control readonly" formControlName="labfee">
+                    </div>
+                    <div class="col-md col-sm col-lg p-2 bd-highlight">
                         <label>Amount to be paid</label>
-                        <input type="text" class="form-control readonly" formControlName="feeamount" width="20%">
+                        <input type="text" class="form-control readonly" formControlName="totalfee">
                     </div>
                 </div>
 
-
-
-
-
-
-                <div class="row">
+                <div class="row" *ngIf="show">
                     <div class="col-md-4 col-sm-4 col-lg-3 p-2 m-2 bd-highlight">
                         <button type="button" class="btn btn-primary m-2">Make Payment</button>
                         <button type="button" class="btn btn-primary m-2">Cancel</button>

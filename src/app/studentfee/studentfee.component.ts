@@ -16,7 +16,8 @@ export class StudentfeeComponent implements OnInit {
 
   pgmlabel: string;
   feeForm: FormGroup;
-
+  //showdetail:boolean ;
+  show :boolean;
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
@@ -24,6 +25,8 @@ export class StudentfeeComponent implements OnInit {
     private elementRef: ElementRef ) { }
 
   ngOnInit(): void {
+
+    this.show=true;
     this.pgmwidth="100%";
    
     //this.pgmlabel="Enter Program";
