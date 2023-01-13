@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url:""
+  url:"https://admission.dei.ac.in:8080/epay"
 };
