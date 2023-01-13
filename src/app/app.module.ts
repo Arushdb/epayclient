@@ -9,6 +9,7 @@ import { HeaderComponent } from './header/header.component';
 import { StudentfeeComponent } from './studentfee/studentfee.component';
 import {SharedModule} from './shared/shared.module'
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import {SharedModule} from './shared/shared.module'
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+      
   ],
   providers: [],
   bootstrap: [AppComponent]

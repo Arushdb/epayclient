@@ -26,6 +26,7 @@ import { MessageComponent } from '../shared/message/message.component';
 import { AgGridModule } from 'ag-grid-angular';
 
 import { ListComponent } from './list/list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -65,6 +66,7 @@ import { ListComponent } from './list/list.component';
 
    FormsModule,
    ReactiveFormsModule,
+   HttpClientModule
    //AgGridModule.withComponents([]),
   ],
   exports: [

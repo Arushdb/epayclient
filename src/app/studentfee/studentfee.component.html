@@ -1,9 +1,12 @@
+<app-message></app-message>
 <div class="container">
     <div class="card">
+    
         <div class="card-body  border border-primary">
+            <button type="button" class="btn-close" (click)="goBack()" aria-label="Close"></button>
             <h3 class="card-header">Continue Student Fee Payment</h3>
 
-            <form [formGroup]="feeForm">
+            <form  #form="ngForm" [formGroup]="feeForm" (ngSubmit)="submit(form)">
 
                 <div class="row">
 
@@ -15,7 +18,7 @@
                     <div class="col-md-4 col-sm-4 col-lg-2 p-2 bd-highlight">
                         <label>Semester</label>
                         <select formControlName="semester" class="form-control">
-                            <option value=""></option>
+                           
                             <option value="SM1">1</option>
                             <option value="SM2">2</option>
                             <option value="SM3">3</option>
@@ -31,47 +34,58 @@
                         </select>
                     </div>
 
-                    <div class="text-right col-md-4 col-sm-2 col-lg-1 p-2 m-3 bd-highlight">
-                        <button type="button" class="btn btn-primary m-2 ">OK</button>
+                    <div *ngIf="!show" class="text-right col-md-4 col-sm-2 col-lg-1 p-2 m-3 bd-highlight">
+                        <button type="submit" class="btn btn-primary m-2 btn-block "  >OK</button>
+                        
                     </div>
+                   
                 </div>
-                
+
+                <div class="row" *ngIf="show"></div>
+                <div *ngIf="feepending=='D' || feepending=='Y' " class="col-md col-sm col-lg p-2 bd-highlight alert alert-warning" role="alert" >
+                 <p> You have a pending fee for below semester.Please make Payment</p>
+                </div>
                 <div class="row" *ngIf="show">
+
+                    <div *ngIf="feepending=='D' || feepending=='Y'" class="col-md-2 col-sm-2 col-lg-2 p-2 bd-highlight">
+                        <label>Semester</label>
+                        <input type="text" class="form-control readonly" readonly formControlName="pendingsemester">
+                    </div>
 
                     <div  class="col-md-4 col-sm-4 col-lg-4 p-2 bd-highlight">
                         <label>Program</label>
-                        <input type="text" class="form-control readonly" formControlName="program">
+                        <input type="text" class="form-control readonly" readonly formControlName="programname">
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-3 p-2 bd-highlight">
                         <label>Name</label>
-                        <input type="text" class="form-control readonly" formControlName="studentname">
+                        <input type="text" class="form-control " readonly  formControlName="studentname">
                     </div>
 
                 </div>
 
                 <div class="row" *ngIf= "show">
-                    <div class="col-md col-sm col-lg p-2 bd-highlight">
+                    <div class="col-md col-sm col-lg p-2 bd-highlight" *ngIf="feepending!='D'">
                         <label>Fee Amount</label>
-                        <input type="text" class="form-control readonly" formControlName="feeamount">
+                        <input type="text" class="form-control "  readonly formControlName="feeamount">
                     </div>
-                    <div class="col-md col-sm col-lg p-2 bd-highlight">
+                    <div  *ngIf="feepending!='D'" class="col-md col-sm col-lg p-2 bd-highlight">
                         <label>Late fee</label>
-                        <input type="text" class="form-control readonly" formControlName="latefee">
+                        <input type="text" class="form-control "  readonly formControlName="latefee">
                     </div>
-                    <div class="col-md col-sm-4 col-lg p-2 bd-highlight">
+                    <div *ngIf="feepending!='D'" class="col-md col-sm-4 col-lg p-2 bd-highlight">
                         <label>Lab fee</label>
-                        <input type="text" class="form-control readonly" formControlName="labfee">
+                        <input type="text" class="form-control " readonly formControlName="labfee">
                     </div>
                     <div class="col-md col-sm col-lg p-2 bd-highlight">
                         <label>Amount to be paid</label>
-                        <input type="text" class="form-control readonly" formControlName="totalfee">
+                        <input type="text" class="form-control " readonly formControlName="totalfee">
                     </div>
                 </div>
 
                 <div class="row" *ngIf="show">
                     <div class="col-md-4 col-sm-4 col-lg-3 p-2 m-2 bd-highlight">
                         <button type="button" class="btn btn-primary m-2">Make Payment</button>
-                        <button type="button" class="btn btn-primary m-2">Cancel</button>
+                        <button type="button" class="btn btn-primary m-2" (click)="goBack()">Cancel</button>
                     </div>
 
                 </div>

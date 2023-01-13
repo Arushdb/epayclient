@@ -32,6 +32,23 @@ export class StudentService {
 
     }
 
+    
+    getStudentDetail(form){
+      debugger;
+      var myurl =this.url+"/api/test/student";
+      let headers: HttpHeaders= new HttpHeaders();
+     
+      let param:HttpParams= new HttpParams();
+      console.log("rollnumber",form.rollnumber);
+      param=param
+                 .set('rollno',form.rollnumber) 
+                 .set('semestercode',form.semester);
+
+           console.log("Arush Param",param);
+      return  this.httpclient.get(myurl,{headers,params:param,responseType: 'json'});
+
+    }
+
 public log(message: string) {
       this.messagesrv.clear();
     this.messagesrv.add(`Student Service: ${message}`);

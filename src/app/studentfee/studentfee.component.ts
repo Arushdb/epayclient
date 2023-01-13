@@ -1,7 +1,10 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MyItem } from '../interfaces/my-item';
+import { StudentService } from '../services/student.service';
+import { SubscriptionContainer } from 'src/app/shared/subscription-container';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-studentfee',
@@ -10,41 +13,103 @@ import { MyItem } from '../interfaces/my-item';
 })
 export class StudentfeeComponent implements OnInit {
 
-  rolldata=[];
-  pgmdata:MyItem[]=[];
-  pgmwidth:string;
-
-  pgmlabel: string;
+ 
+  feepending: string;
+ 
   feeForm: FormGroup;
-  //showdetail:boolean ;
-  show :boolean;
+ 
+  show: boolean;
+
+  subs = new SubscriptionContainer();
+  spinnerstatus: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
-   
-    private elementRef: ElementRef ) { }
+    private studentservice: StudentService,
+    private location: Location,
 
+
+    private elementRef: ElementRef) { }
+
+  // convenience getter for easy access to form fields
+  get f() {
+
+    return this.feeForm.controls;
+  }
+
+
+
+  ngOnDestroy(): void {
+    debugger;
+    this.subs.dispose();
+    this.elementRef.nativeElement.remove();
+
+  }
+
+  goBack(): void {
+    this.location.back();
+  }
   ngOnInit(): void {
+    this.feepending = "";
+    this.show = false;
+    
 
-    this.show=true;
-    this.pgmwidth="100%";
    
-    //this.pgmlabel="Enter Program";
-    this.pgmdata.push
-    ({id:'1',label:"Program-1"},
-    {id:'2',label:"Program-2"},
-    {id:'3',label:"Program-3"},);
+   
 
 
     this.feeForm = this.formBuilder.group({
-      //title: ['', Validators.required],
-      appnumber: [''],
-      firstName: ['', Validators.required],
-      fatherFirstName: ['', Validators.required],
-      fatherMiddleName: [''],
-      fatherLastName: ['']
+  
+      rollnumber: ['',Validators.minLength(6)],
+    
+      semester: ['',Validators.required],
+     
+      programname: [''],
+      studentname: [''],
+      feeamount: [''],
+      latefee: [''],
+      labfee: [''],
+      totalfee: [''],
+      pendingsemester: [''],
 
-  });
 
+
+    });
+
+  }
+
+  submit(form:NgForm) {
+    debugger;
+    if (form.invalid)
+      return;
+    let myfeeform: any;
+    myfeeform = this.feeForm.getRawValue();
+    this.subs.add = this.studentservice.getStudentDetail(myfeeform).subscribe(res => {
+      this.show = true;
+
+      let totalfee: string;
+      totalfee = String(parseFloat(res[0].amount) + parseFloat(res[0].labfee) + parseFloat(res[0].latefee));
+      this.f.feeamount.setValue(res[0].amount);
+      this.f.studentname.setValue(res[0].studentname);
+      this.f.latefee.setValue(res[0].latefee);
+      this.f.labfee.setValue(res[0].labfee);
+      this.f.programname.setValue(res[0].programname);
+      this.f.pendingsemester.setValue(res[0].semestercode);
+
+      this.f.totalfee.setValue(totalfee);
+
+      this.feepending = res[0].feepending;
+
+      //this.feeForm.get('feeamount').setValue(res[0].amount);
+
+
+    }, err => {
+      console.log(err);
+      this.studentservice.log(err.error.message);
+      this.feeForm.reset();
+    });
+
+
+  }
 }
-}
+
