@@ -7,7 +7,9 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { HeaderComponent } from './header/header.component';
 import { StudentfeeComponent } from './studentfee/studentfee.component';
-import {SharedModule} from './shared/shared.module'
+import {SharedModule} from './shared/shared.module';
+import { ApplicationfeeComponent } from './applicationfee/applicationfee.component';
+import { CertificatefeeComponent } from './certificatefee/certificatefee.component'
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import {SharedModule} from './shared/shared.module'
     AppComponent,
     MainComponent,
     HeaderComponent,
-    StudentfeeComponent
+    StudentfeeComponent,
+    ApplicationfeeComponent,
+    CertificatefeeComponent
   ],
   imports: [
     BrowserModule,

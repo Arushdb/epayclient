@@ -1,4 +1,7 @@
 <app-message></app-message>
+<app-spinner [spinnerstatus] = "busystatus" ></app-spinner>
+
+
 <div class="container">
     <div class="card">
     
@@ -12,25 +15,25 @@
 
                     <div class="col-md-4 col-sm-4 col-lg-2 p-2 bd-highlight">
                         <label>Roll Number</label>
-                        <input type="text" class="form-control" formControlName="rollnumber" placeholder="Roll Number"
+                        <input type="text" class="form-control" formControlName="rollnumber" [readonly]="show" placeholder="Roll Number"
                             width="20%">
                     </div>
                     <div class="col-md-4 col-sm-4 col-lg-2 p-2 bd-highlight">
                         <label>Semester</label>
-                        <select formControlName="semester" class="form-control">
+                        <select formControlName="semester" [disabled]="show" class="form-control">
                            
-                            <option value="SM1">1</option>
-                            <option value="SM2">2</option>
-                            <option value="SM3">3</option>
-                            <option value="SM4">4</option>
-                            <option value="SM5">5</option>
-                            <option value="SM6">6</option>
-                            <option value="SM7">7</option>
-                            <option value="SM8">8</option>
-                            <option value="SM9">9</option>
-                            <option value="SM10">10</option>
-                            <option value="SM11">11</option>
-                            <option value="SM12">12</option>
+                            <option value="SM1" [disabled]="show">1</option>
+                            <option value="SM2" [disabled]="show">2</option>
+                            <option value="SM3" [disabled]="show">3</option>
+                            <option value="SM4" [disabled]="show">4</option>
+                            <option value="SM5"[disabled]="show">5</option>
+                            <option value="SM6" [disabled]="show">6</option>
+                            <option value="SM7" [disabled]="show">7</option>
+                            <option value="SM8" [disabled]="show">8</option>
+                            <option value="SM9" [disabled]="show">9</option>
+                            <option value="SM10" [disabled]="show">10</option>
+                            <option value="SM11" [disabled]="show">11</option>
+                            <option value="SM12" [disabled]="show">12</option>
                         </select>
                     </div>
 

@@ -17,7 +17,7 @@ export class StudentfeeComponent implements OnInit {
   feepending: string;
  
   feeForm: FormGroup;
- 
+  busystatus:boolean=false;
   show: boolean;
 
   subs = new SubscriptionContainer();
@@ -84,6 +84,7 @@ export class StudentfeeComponent implements OnInit {
       return;
     let myfeeform: any;
     myfeeform = this.feeForm.getRawValue();
+    this.busystatus=true
     this.subs.add = this.studentservice.getStudentDetail(myfeeform).subscribe(res => {
       this.show = true;
 
@@ -101,12 +102,13 @@ export class StudentfeeComponent implements OnInit {
       this.feepending = res[0].feepending;
 
       //this.feeForm.get('feeamount').setValue(res[0].amount);
-
+      this.busystatus=false;
 
     }, err => {
       console.log(err);
       this.studentservice.log(err.error.message);
       this.feeForm.reset();
+      this.busystatus=false;
     });
 
 
