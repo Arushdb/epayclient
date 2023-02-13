@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ApplicationfeeComponent } from './applicationfee/applicationfee.component';
 import { CertificatefeeComponent } from './certificatefee/certificatefee.component';
+import { HostelfeeComponent } from './hostelfee/hostelfee.component';
 import { MainComponent } from './main/main.component';
+import { PostfeeComponent } from './postfee/postfee.component';
 import { StudentfeeComponent } from './studentfee/studentfee.component';
 
 const routes: Routes = [
@@ -19,6 +21,8 @@ const routes: Routes = [
     {path:'trncertificate',component:CertificatefeeComponent,data:{certificatetype:"trn"}},
     {path:'procertificate',component:CertificatefeeComponent,data:{certificatetype:"pro"}},
     {path:'rescertificate',component:CertificatefeeComponent,data:{certificatetype:"res"}},
+    {path:'hostelfee',component:HostelfeeComponent},
+    {path:'postfee',component:PostfeeComponent}
 
     
     

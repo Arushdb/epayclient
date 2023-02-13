@@ -101,6 +101,38 @@ export class StudentService {
     //return this.httpclient.get(myurl, { headers, params: param, responseType: 'json' });
 
   }
+
+
+
+
+  gethostelfee(form) {
+    var myurl = this.url + "/api/test/hostel";
+    let headers: HttpHeaders = new HttpHeaders();
+
+    let param: HttpParams = new HttpParams();
+
+    param = param
+      .set('applno', form.applicationno)
+      .set('rollno', form.rollno)
+      .set('mode', form.mode);
+
+      return this.httpclient.post(myurl,form, { params: param, responseType: 'json' });
+
+  }
+
+  getpostfee(form) {
+   
+      var myurl = this.url + "/api/test/post";
+      let headers: HttpHeaders = new HttpHeaders();
+  
+      let param: HttpParams = new HttpParams();
+  
+      param = param
+        .set('appno', form.applicationno);
+      return this.httpclient.get(myurl, { headers, params: param, responseType: 'json' });
+
+  }
+
   public log(message: string) {
     this.messagesrv.clear();
     this.messagesrv.add(`Student Service: ${message}`);

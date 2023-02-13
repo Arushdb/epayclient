@@ -9,7 +9,9 @@ import { HeaderComponent } from './header/header.component';
 import { StudentfeeComponent } from './studentfee/studentfee.component';
 import {SharedModule} from './shared/shared.module';
 import { ApplicationfeeComponent } from './applicationfee/applicationfee.component';
-import { CertificatefeeComponent } from './certificatefee/certificatefee.component'
+import { CertificatefeeComponent } from './certificatefee/certificatefee.component';
+import { HostelfeeComponent } from './hostelfee/hostelfee.component';
+import { PostfeeComponent } from './postfee/postfee.component'
 
 
 @NgModule({
@@ -19,7 +21,9 @@ import { CertificatefeeComponent } from './certificatefee/certificatefee.compone
     HeaderComponent,
     StudentfeeComponent,
     ApplicationfeeComponent,
-    CertificatefeeComponent
+    CertificatefeeComponent,
+    HostelfeeComponent,
+    PostfeeComponent
   ],
   imports: [
     BrowserModule,
