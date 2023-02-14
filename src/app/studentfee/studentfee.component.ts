@@ -22,6 +22,7 @@ export class StudentfeeComponent implements OnInit {
 
   subs = new SubscriptionContainer();
   spinnerstatus: boolean = false;
+  submitted: boolean;
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
@@ -52,6 +53,7 @@ export class StudentfeeComponent implements OnInit {
   ngOnInit(): void {
     this.feepending = "";
     this.show = false;
+    this.submitted = false;
     
 
    
@@ -60,7 +62,7 @@ export class StudentfeeComponent implements OnInit {
 
     this.feeForm = this.formBuilder.group({
   
-      rollnumber: ['',Validators.minLength(6)],
+      rollnumber: ['',[Validators.required,Validators.minLength(6)]],
     
       semester: ['',Validators.required],
      
@@ -80,6 +82,7 @@ export class StudentfeeComponent implements OnInit {
 
   submit(form:NgForm) {
     debugger;
+    this.submitted=true;
     if (form.invalid)
       return;
     let myfeeform: any;

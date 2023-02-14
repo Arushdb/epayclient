@@ -18,6 +18,8 @@
                         <input type="text" class="form-control" formControlName="applicationno" [ngClass]="{ 'is-invalid': submitted && f.applicationno.errors}" [readonly] = "show" placeholder="Application Number"
                             width="20%">
                             <div *ngIf="submitted && f.applicationno.errors" class="invalid-feedback">
+                                <div *ngIf="f.applicationno.errors.required">Application number is required </div>
+
                                 <div *ngIf="f.applicationno.errors.minlength">Application number of minimum length {{f.applicationno.errors.minlength.requiredLength
                                 }} is required</div>
                             </div>
