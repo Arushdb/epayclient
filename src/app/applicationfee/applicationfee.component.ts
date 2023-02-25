@@ -81,7 +81,7 @@ export class ApplicationfeeComponent implements OnInit {
 
     if (this.feetype == 'newadm') {
       this.title = "Admission Fee";
-      this.f.applicationno.setValidators([Validators.required, Validators.minLength(8)])
+      this.f.applicationno.setValidators([Validators.required, Validators.minLength(10)])
 
     }
 
@@ -101,7 +101,7 @@ export class ApplicationfeeComponent implements OnInit {
     this.busystatus=true;
     if (this.feetype == 'appfee') {
 
-
+      debugger;
 
       this.subs.add = this.studentservice.getApplicantDetail(myfeeform).subscribe(res => {
         this.show = true;
@@ -109,12 +109,15 @@ export class ApplicationfeeComponent implements OnInit {
         this.f.feeamount.setValue(res[0].appfee);
         this.f.studentname.setValue(res[0].studentname);
         this.busystatus=false;
+        return;
 
       }, err => {
+        debugger;
         console.log(err);
         this.busystatus=false;
         this.studentservice.log(err.error.message);
         this.feeForm.reset();
+        return;
       });
     }
 
@@ -125,16 +128,19 @@ export class ApplicationfeeComponent implements OnInit {
 
       this.subs.add = this.studentservice.getAdmissionDetail(myfeeform).subscribe(res => {
         this.show = true;
-        
+        this.busystatus=false;
         this.f.feeamount.setValue(res[0].amount);
         this.f.studentname.setValue(res[0].studentname);
-        this.busystatus=false;
+        return;
 
       }, err => {
         console.log(err);
+        debugger;
+        this.busystatus=false;
         this.studentservice.log(err.error.message);
         this.feeForm.reset();
-        this.busystatus=false;
+        return;
+     
       });
     }
 

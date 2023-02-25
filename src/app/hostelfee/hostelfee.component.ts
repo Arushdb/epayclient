@@ -90,7 +90,7 @@ export class HostelfeeComponent implements OnInit {
     this.showhostel =true;
     var target = evt.target;
     if (target.defaultValue=='byapplno'){
-      this.f.applicationno.setValidators([Validators.required, Validators.minLength(6)]);
+      this.f.applicationno.setValidators([Validators.required, Validators.minLength(10)]);
       this.showappno =true;
       this.showrollno = false;
     
@@ -111,8 +111,11 @@ export class HostelfeeComponent implements OnInit {
     this.f.applicationno.setValue(String(this.f.applicationno.value).toUpperCase());
     //this.show=true;
     this.submitted = true;
-    if (form.invalid)
+    if (form.invalid){
+   
       return;
+    }
+     
     let myfeeform: any;
     myfeeform = this.feeForm.getRawValue();
     this.busystatus=true;

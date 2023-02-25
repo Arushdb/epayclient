@@ -20,8 +20,12 @@
                             <div *ngIf="submitted && f.applicationno.errors" class="invalid-feedback">
                                 <div *ngIf="f.applicationno.errors.required">Application number is required </div>
 
-                                <div *ngIf="f.applicationno.errors.minlength">Application number of minimum length {{f.applicationno.errors.minlength.requiredLength
-                                }} is required</div>
+                                <div *ngIf=" f.applicationno.errors.minlength && feetype=='newadm'">
+                                     Format of your app no:AABBBBBBYY where  AA =program code, BBBBBB= 6 digit applicationno,YY=Year ,eg. BE12345622</div>
+                                     
+                                     <div *ngIf=" f.applicationno.errors.minlength && feetype=='appfee'">
+                                        6 digit Application number is required </div>
+                             
                             </div>
                     </div>
                     <div *ngIf="!show" class="text-right col-md-4 col-sm-2 col-lg-1 p-2 m-3 bd-highlight">

@@ -11,9 +11,9 @@ const routes: Routes = [
   
     //basic routes
     {path:'',redirectTo:'main',pathMatch:'full'},
-  
-    {path:'student',component:StudentfeeComponent},
     {path:'main',component:MainComponent},
+    {path:'student',component:StudentfeeComponent},
+  
     {path:'applicationfee',component:ApplicationfeeComponent,data:{feetype:"appfee"}},
     {path:'newadmissionfee',component:ApplicationfeeComponent,data:{feetype:"newadm"}},
     {path:'migcertificate',component:CertificatefeeComponent,data:{certificatetype:"mig"}},
@@ -24,7 +24,7 @@ const routes: Routes = [
     {path:'hostelfee',component:HostelfeeComponent},
     {path:'postfee',component:PostfeeComponent}
 
-    
+   
     
     
   
