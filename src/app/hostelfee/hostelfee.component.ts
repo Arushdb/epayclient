@@ -86,7 +86,7 @@ export class HostelfeeComponent implements OnInit {
   }
 
   onmodechanged(evt){
-    debugger;
+    
     this.showhostel =true;
     var target = evt.target;
     if (target.defaultValue=='byapplno'){
@@ -106,7 +106,7 @@ export class HostelfeeComponent implements OnInit {
 
   submit(form: NgForm) {
     
-    debugger;
+    
     
     this.f.applicationno.setValue(String(this.f.applicationno.value).toUpperCase());
     //this.show=true;

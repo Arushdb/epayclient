@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MyItem } from '../interfaces/my-item';
 import { StudentService } from '../services/student.service';
@@ -41,7 +41,7 @@ export class StudentfeeComponent implements OnInit {
 
 
   ngOnDestroy(): void {
-    debugger;
+    
     this.subs.dispose();
     this.elementRef.nativeElement.remove();
 
@@ -64,7 +64,7 @@ export class StudentfeeComponent implements OnInit {
   
       rollnumber: ['',[Validators.required,Validators.minLength(6)]],
     
-      semester: ['',Validators.required],
+      semester: new FormControl({value:'',diabled:"show"},Validators.required),  //[{value:'',disabled},Validators.required],
      
       programname: [''],
       studentname: [''],
@@ -81,7 +81,7 @@ export class StudentfeeComponent implements OnInit {
   }
 
   submit(form:NgForm) {
-    debugger;
+    
     this.submitted=true;
     if (form.invalid)
       return;
